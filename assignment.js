@@ -25,6 +25,7 @@ NotesApplication.prototype.list_note = function()
 NotesApplication.prototype.delete_note = function(note_id) 
 {
 	// splice([indexofItem], [howManyItemsFromIndex])
+	console.log(this.notes);
 	this.notes = this.notes.splice(note_id, 1);
 };
 //function to edit note
@@ -39,19 +40,30 @@ NotesApplication.prototype.get_note = function(note_id)
 	return this.notes[note_id];
 };
 //function to search through array....not sure about this.
-NotesApplication.prototype.search= function(note_id) 
+NotesApplication.prototype.search= function(search_text) 
 {
-	var searcharray = this.notes.length;
-	for (var i = 0; i < searcharray; i++) 
-	{
-		for( var note_id in this.notes){
-			return get_note(note_id)
+	var originalNoteIndexes = []
+
+	for( var i = 0; i <this.notes.length; i++){
+		var indexOfSearchText = this.notes[i].indexOf(search_text);
+		if (indexOfSearchText != -1)
+		{
+			originalNoteIndexes.push(i);	
 		}
-	};
+	}
+	for (var index in originalNoteIndexes)
+	{
+		console.log("Notes ID " + i );
+  		console.log(this.notes[index] + "\n");
+  		console.log("By Author " + this.author + "\n");
+	}
+  		
+	if (originalNoteIndexes.length === 0){
+		return search_text+"  not found";
+	}
 };
 
 var noteapplication = new NotesApplication('felix','a man of words');
-// dummy input
 noteapplication.create("sueg");
 noteapplication.create("fly");
 
