@@ -42,13 +42,15 @@ NotesApplication.prototype.get_note = function(note_id)
 //function to search through array....not sure about this.
 NotesApplication.prototype.search= function(search_text) 
 {
-	var originalNoteIndexes = []
+	var originalNoteIndexes = [];
 
-	for( var i = 0; i <this.notes.length; i++){
+	for( var i = 0; i <this.notes.length; i++)
+	{
 		var indexOfSearchText = this.notes[i].indexOf(search_text);
 		if (indexOfSearchText != -1)
 		{
-			originalNoteIndexes.push(i);	
+			originalNoteIndexes.push(i);
+			break;
 		}
 	}
 	for (var index in originalNoteIndexes)
